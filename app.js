@@ -1,10 +1,14 @@
 var Twit = require('twit');
 var config = require('./config');
+var quotes = require('./quotes');
 
 var T = new Twit(config);
 
+var inspirationalQuotes = quotes.inspiration;
+
 function createTweet() {
-  var tweet = { status: 'Testing...' };
+  var randomNum = Math.floor(Math.random() * inspirationalQuotes.length);
+  var tweet = { status: inspirationalQuotes[randomNum] };
 
   function tweetData(err, data, response) {
     return err
