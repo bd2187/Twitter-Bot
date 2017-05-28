@@ -4,9 +4,8 @@ var quotes = require('./quotes');
 
 var T = new Twit(config);
 
-var inspirationalQuotes = quotes.inspiration;
-
 function createTweet() {
+  var inspirationalQuotes = quotes.inspiration;
   var randomNum = Math.floor(Math.random() * inspirationalQuotes.length);
   var tweet = { status: inspirationalQuotes[randomNum] };
 
@@ -17,6 +16,6 @@ function createTweet() {
   }
 
   T.post('statuses/update', tweet, tweetData);
-}
+};
 
-createTweet();
+setInterval(createTweet, 60000*60);
